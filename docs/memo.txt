@@ -1,0 +1,13 @@
+python3 -m pip install virtualenv
+virtualenv --python=python3 sphinx
+
+. sphinx/bin/activate
+
+python3 -m pip install -r requirements.txt
+
+sphinx-quickstart 
+
+##
+python3 -m pip install pybind11
+python3 setup.py install
+##
