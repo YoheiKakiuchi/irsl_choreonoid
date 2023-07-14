@@ -1,8 +1,0 @@
-recommonmark
-six
-Sphinx
-sphinx-markdown-tables
-sphinx_rtd_theme
-sphinx-autobuild
-livereload
-Jinja2

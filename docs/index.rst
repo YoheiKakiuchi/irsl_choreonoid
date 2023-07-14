@@ -10,11 +10,14 @@ Welcome to irsl_choreonoid's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   hogee
+   ./test0.rst
+   ./test1.rst
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
+
 .. * :ref:`search`
+

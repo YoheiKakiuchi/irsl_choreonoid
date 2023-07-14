@@ -13,10 +13,9 @@ author = 'IRSL-tut'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 from recommonmark.parser import CommonMarkParser
-
+## 'sphinx_markdown_tables',
 extensions = [
     'recommonmark',
-    'sphinx_markdown_tables',
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
