@@ -175,6 +175,8 @@ PYBIND11_MODULE(IRSLCoords, m)
     .def_property("rot",
                   [](coordinates &self) { return self.rot; },
                   [](coordinates &self, ref_mat3 mat) { self.rot = mat; })
+    // .def_property("T",
+    // .def("setPosition"
     .def("copy", [](const coordinates &self) { return new coordinates(self.pos, self.rot); })
     .def("equal", &coordinates::equal, py::arg("cds"), py::arg("eps") = 0.00001)
     .def("toPosition",
@@ -287,10 +289,10 @@ PYBIND11_MODULE(IRSLCoords, m)
             double an_ = ret(3); Vector3 ax_(ret(0), ret(1), ret(2));
             self.setRotationAngle(an_, ax_);
             return &self; } )
-    .def("x_axis", [](const coordinates &self) { Vector3 ret; self.x_axis(ret); return ret; } )
-    .def("y_axis", [](const coordinates &self) { Vector3 ret; self.y_axis(ret); return ret; } )
-    .def("z_axis", [](const coordinates &self) { Vector3 ret; self.z_axis(ret); return ret; } )
-    .def("getRPY", [](const coordinates &self) { Vector3 ret; self.getRPY(ret); return ret; } )
+    .def("x_axis", [](const coordinates &self) { Vector3 ret; self.x_axis(ret); return ret; } )//property_readonly
+    .def("y_axis", [](const coordinates &self) { Vector3 ret; self.y_axis(ret); return ret; } )//property_readonly
+    .def("z_axis", [](const coordinates &self) { Vector3 ret; self.z_axis(ret); return ret; } )//property_readonly
+    .def("getRPY", [](const coordinates &self) { Vector3 ret; self.getRPY(ret); return ret; } )//property_readonly
     .def("setRPY", [](coordinates &self, ref_vec3 rpy) { self.setRPY(rpy); } )
     .def("setRPY", [](coordinates &self, double r, double p, double y) { self.setRPY(r,p,y); } )
     .def("inverse", [](coordinates &self) { self.inverse(); return &self; } )

@@ -26,6 +26,33 @@ def load_script(filename):
     exec(open(filename).read())
 
 def parseURL(url):
+    """parseURL
+
+    Args:
+        url (str): url
+
+        url is like 'scheme://netloc/xxx/yyy/zzz'
+
+    Returns:
+        str: absolute path
+
+    Examples:
+        >>> parseURL('choreonoid://share/dir/file')
+        /choreonoid/share/choreonoid-1.8/dir/file
+
+        >>> parseURL('env://HOME/dir/file')
+        /home/user/dir/file
+
+        >>> parseURL('file:///dir/file')
+        /dir/file
+
+        >>> parseURL('file://./dir/file')
+        /current_dir/dir/file
+
+        >>> parseURL('file://~/dir/file')
+        /home/user/dir/file
+    """
+
     if not '://' in url:
         return url
 
@@ -114,19 +141,16 @@ def addSimulator(world = None, simulator_name = 'AISTSimulator'):
     return sim_
 
 def loadRobotItem(fname, name = None, world = True):
-    '''Load robot model and add it as Item
+    """Load robot model and add it as Item
 
-    Parameters
-    ----------
-    fname : str
-        file name of model
-    name : str
-        name of Item
+    Args:
+        fname (str): filename (or path)
+        name (str, optional): name of loaded robot-model
+        world (bool, optional): WorldItem is added if True
 
-    Returns
-    -------
-    instance of cnoid.Body.Body
-    '''
+    Returns:
+        cnoid.BodyPlugin.BodyItem : Loaded robot-model
+    """
     # print('loadRobot: %s'%(fname))
     bI = BodyItem()
     bI.load(str(fname))

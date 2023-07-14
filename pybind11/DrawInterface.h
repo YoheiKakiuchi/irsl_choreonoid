@@ -25,6 +25,7 @@ namespace cnoid {
         SgVertexArrayPtr vertices;
         SgColorArrayPtr colors;
     // added by IRSL
+    public:
         SgPosTransformPtr posTrans;
     public: static void flush()
         {
@@ -251,6 +252,7 @@ namespace cnoid {
             this->addBDAxis(_cds, 1, _length, _y_color);
             this->addBDAxis(_cds, 2, _length, _z_color);
         }
+        //// SgPosTransform
     private:
         void drawArcPreserve(Vector3f posVec, Vector3f radiousVec, Vector3f axisVec, float rotAngle){
             drawArcImpl(posVec, radiousVec, axisVec, rotAngle, true);
