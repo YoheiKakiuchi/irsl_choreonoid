@@ -9,8 +9,6 @@ def __gets(klst, amap):
     return None
 
 def generateMaterial(**kwargs):
-    """generate material from dictionary
-    """
     if 'material' in kwargs:
         return generateMaterial(**(kwargs['material']))
 
@@ -57,8 +55,19 @@ def generateMaterial(**kwargs):
         return mat
     return None
 
+def parseMeshGeneratorOption(mg, **kwargs):
+    val = __gets(('DivisionNumber'), kwargs)
+    if val is not None:
+        mg.setDivisionNumber(val)
+    val = __gets(('NormalGenerationEnabled'), kwargs)
+    if val is not None:
+        mg.setNormalGenerationEnabled(val)
+    val = __gets(('setBoundingBoxUpdateEnabled'), kwargs)
+    if val is not None:
+        mg.setBoundingBoxUpdateEnabled(val)
+
 def loadMesh(fname, **kwargs):
-    """Loading mesh
+    """Loading mesh file
     """
     ld = cnoid.AssimpPlugin.AssimpSceneLoader()
     ld.setMessageSinkStdErr()
@@ -89,7 +98,10 @@ def __genShape(mesh, **kwargs):
     return ret
 
 def makeBox(x, y = None, z = None, **kwargs):
+    """make 'Box' shape
+    """
     mg = cnoid.Util.MeshGenerator()
+    parseMeshGeneratorOption(mg, **kwrags)
     if type(x) is np.ndarray:
         mesh = mg.generateBox(x)
     elif y is not None and z is not None:
@@ -105,27 +117,42 @@ def makeBox(x, y = None, z = None, **kwargs):
     return __genShape(mesh, **kwargs)
 
 def makeCylinder(radius, height, **kwargs):
+    """make 'Cylinder' shape
+    """
     mg = cnoid.Util.MeshGenerator()
+    parseMeshGeneratorOption(mg, **kwrags)
     mesh = mg.generateCylinder(radius, height)
     return __genShape(mesh, **kwargs)
 
 def makeSphere(radius, **kwargs):
+    """make 'Sphere' shape
+    """
     mg = cnoid.Util.MeshGenerator()
+    parseMeshGeneratorOption(mg, **kwrags)
     mesh = mg.generateCylinder(radius)
     return __genShape(mesh, **kwargs)
 
 def makeCone(radius, height, **kwargs):
+    """make 'Cone' shape
+    """
     mg = cnoid.Util.MeshGenerator()
+    parseMeshGeneratorOption(mg, **kwrags)
     mesh = mg.generateCone(radius, height)
     return __genShape(mesh, **kwargs)
 
 def makeCapsule(radius, height, **kwargs):
+    """make 'Capsule' shape
+    """
     mg = cnoid.Util.MeshGenerator()
+    parseMeshGeneratorOption(mg, **kwrags)
     mesh = mg.generateCapsule(radius, height)
     return __genShape(mesh, **kwargs)
 
 def makeTorus(radius, corssSectionRadius, beginAngle = None, endAngle = None, **kwargs):
+    """make 'Torus' shape
+    """
     mg = cnoid.Util.MeshGenerator()
+    parseMeshGeneratorOption(mg, **kwrags)
     if beginAngle is not None and endAngle is not None:
         mesh = mg.generateTorus(radius, corssSectionRadius, beginAngle, endAngle)
     else:
@@ -133,11 +160,11 @@ def makeTorus(radius, corssSectionRadius, beginAngle = None, endAngle = None, **
     return __genShape(mesh, **kwargs)
 
 ### not implemented
-def makeCoords(coords):
-    pass
-
 def makeExtrusion(**kwargs):
     pass
 
 def makeElevationGrid(**kwargs):
+    pass
+
+def makeCoords(coords): ## LineArray
     pass
