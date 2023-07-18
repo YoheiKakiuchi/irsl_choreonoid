@@ -252,7 +252,17 @@ namespace cnoid {
             this->addBDAxis(_cds, 1, _length, _y_color);
             this->addBDAxis(_cds, 2, _length, _z_color);
         }
-        //// SgPosTransform
+        //// copy fron SgPosTransform
+        cnoidPosition &T() { return posTrans->T(); }
+        const cnoidPosition &T() const { return posTrans->T(); }
+        template<class Scalar, int Mode, int Options>
+        void setPosition(const Eigen::Transform<Scalar, 3, Mode, Options>& T) {
+            posTrans->setPosition(T);
+        }
+        template<class Derived>
+        void setPosition(const Eigen::MatrixBase<Derived>& T) {
+            posTrans->setPosition(T);
+        }
     private:
         void drawArcPreserve(Vector3f posVec, Vector3f radiousVec, Vector3f axisVec, float rotAngle){
             drawArcImpl(posVec, radiousVec, axisVec, rotAngle, true);

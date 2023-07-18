@@ -26,7 +26,7 @@ def load_script(filename):
     exec(open(filename).read())
 
 def parseURL(url):
-    """parseURL
+    """parse URL with IRSL original scheme
 
     Args:
         url (str): url
@@ -87,9 +87,24 @@ def parseURL(url):
 ## cnoid Util
 ##
 def isInChoreonoid():
+    """isInChoreonoid
+
+    Args:
+        None
+
+    Returns:
+
+    """
     return (RootItem.instance is not None)
 
 def loadRobot(fname):
+    """loadRobot
+
+    Args:
+
+    Returns:
+
+    """
     rb = BodyLoader().load(str(fname))
     rb.updateLinkTree()
     rb.initializePosition()
@@ -103,24 +118,52 @@ def flushRobotView(name):
     MessageView.instance.flush()
 
 def loadProject(project_file):
+    """loadProject
+
+    Args:
+
+    Returns:
+
+    """
     cnoid.Base.ProjectManager.instance.loadProject(filename=project_file)
 
 ##
 ## cnoid Item
 ##
 def getItemTreeView():
+    """getItemTreeView (deprecated)
+
+    Args:
+
+    Returns:
+
+    """
     if callable(ItemTreeView.instance):
         return ItemTreeView.instance()
     else:
         return ItemTreeView.instance
 
 def getRootItem():
+    """getRootItem (deprecated)
+
+    Args:
+
+    Returns:
+
+    """
     if callable(RootItem.instance):
         return RootItem.instance()
     else:
         return RootItem.instance
 
 def getWorld(name = 'World'):
+    """getWorld
+
+    Args:
+
+    Returns:
+
+    """
     rI = getRootItem()
     ret = rI.findItem(name)
     if ret == None:
@@ -131,6 +174,13 @@ def getWorld(name = 'World'):
     return ret
 
 def addSimulator(world = None, simulator_name = 'AISTSimulator'):
+    """addSimulator
+
+    Args:
+
+    Returns:
+
+    """
     if world is None:
         world = getWorld()
     sim_ = world.findItem(simulator_name)
@@ -180,15 +230,43 @@ def loadRobotItem(fname, name = None, world = True):
     return bI
 
 def findItem(name):
+    """findItem
+
+    Args:
+
+    Returns:
+
+    """
     return RootItem.instance.findItem(name)
 
 def findItems(name):
+    """findItems
+
+    Args:
+
+    Returns:
+
+    """
     return [ itm for itm in RootItem.instance.getDescendantItems() if itm.name == name ]
 
 def removeItem(item_):
+    """removeItem
+
+    Args:
+
+    Returns:
+
+    """
     item_.detachFromParentItem()
 
 def findBodyItem(name_or_body):
+    """findBodyItem
+
+    Args:
+
+    Returns:
+
+    """
     ret = None
     if type(name_or_body) is str:
         for itm in findItems(name_or_body):
@@ -203,6 +281,13 @@ def findBodyItem(name_or_body):
     return ret
 
 def findRobot(name):
+    """findRobot
+
+    Args:
+
+    Returns:
+
+    """
     ret = findBodyItem(name)
     if ret is None:
         return None
@@ -216,15 +301,36 @@ def findRobot(name):
 ## cnoid Position
 ##
 def cnoidPosition(rotation = None, translation = None):
-  ret = np.identity(4)
-  if not (rotation is None):
-    ret[:3, :3] = rotation
-  if not (translation is None):
-    ret[:3, 3] = translation
-  return ret
+    """cnoidPosition
+
+    Args:
+
+    Returns:
+
+    """
+    ret = np.identity(4)
+    if not (rotation is None):
+        ret[:3, :3] = rotation
+    if not (translation is None):
+        ret[:3, 3] = translation
+    return ret
 
 def cnoidRotation(cPosition):
-  return cPosition[:3, :3]
+    """cnoidRotation
+
+    Args:
+
+    Returns:
+
+    """
+    return cPosition[:3, :3]
 
 def cnoidTranslation(cPosition):
-  return cPosition[:3, 3]
+    """cnoidTranslation
+
+    Args:
+
+    Returns:
+
+    """
+    return cPosition[:3, 3]

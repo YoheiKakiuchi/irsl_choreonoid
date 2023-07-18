@@ -11,8 +11,6 @@
 #include <cnoid/Body>
 #include <cnoid/Link>
 
-#include <iostream>
-
 using namespace cnoid;
 namespace py = pybind11;
 
@@ -180,7 +178,8 @@ PYBIND11_MODULE(IRSLCoords, m)
     .def_property("cnoidPosition",
                   [](coordinates &self) -> Matrix4RM { cnoidPosition p; self.toPosition(p); return p.matrix(); },
                   [](coordinates &self, Eigen::Ref<const Matrix4RM> T) { cnoidPosition p(T); self = p; })
-#if 0
+#if 0 // just test (do not make instance and change value of passed instance) // not succeeded
+    #include <iostream>
     .def("setCoordsToPosition",
          [](coordinates &self, Isometry3::MatrixType &_to) {
              // Isometry3 T(Isometry3::Identity());
@@ -311,10 +310,11 @@ PYBIND11_MODULE(IRSLCoords, m)
             double an_ = ret(3); Vector3 ax_(ret(0), ret(1), ret(2));
             self.setRotationAngle(an_, ax_);
             return &self; } )
-    .def("x_axis", [](const coordinates &self) { Vector3 ret; self.x_axis(ret); return ret; } )//property_readonly
-    .def("y_axis", [](const coordinates &self) { Vector3 ret; self.y_axis(ret); return ret; } )//property_readonly
-    .def("z_axis", [](const coordinates &self) { Vector3 ret; self.z_axis(ret); return ret; } )//property_readonly
-    .def("getRPY", [](const coordinates &self) { Vector3 ret; self.getRPY(ret); return ret; } )//property_readonly
+    .def_property_readonly("x_axis", [](const coordinates &self) { Vector3 ret; self.x_axis(ret); return ret; } )
+    .def_property_readonly("y_axis", [](const coordinates &self) { Vector3 ret; self.y_axis(ret); return ret; } )
+    .def_property_readonly("z_axis", [](const coordinates &self) { Vector3 ret; self.z_axis(ret); return ret; } )
+    .def_property_readonly("RPY", [](const coordinates &self) { Vector3 ret; self.getRPY(ret); return ret; } )
+    .def("getRPY", [](const coordinates &self) { Vector3 ret; self.getRPY(ret); return ret; } )
     .def("setRPY", [](coordinates &self, ref_vec3 rpy) { self.setRPY(rpy); } )
     .def("setRPY", [](coordinates &self, double r, double p, double y) { self.setRPY(r,p,y); } )
     .def("inverse", [](coordinates &self) { self.inverse(); return &self; } )

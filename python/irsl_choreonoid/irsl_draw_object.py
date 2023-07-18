@@ -28,32 +28,68 @@ from cnoid.IRSLCoords import coordinates
 
 # setattr('coords')
 class coordsWrapper(coordinates):
+    """coordsWrapper(class)
+    """
     def __init__(self, child, init_coords=None):
         self.__child = child
         self.newcoords(init_coords)
+
     def __updateChild(self):
         self.__child.T = self.T
+
     def revert(self): ##
         self.T =  self.__child.T
+
     def newcoords(self, cds):
+        """
+
+        Args:
+
+        Returns:
+
+        """
         super().newcoords(cds)
         self.__updateChild()
         return self
+
     def translate(self, pos, wrt = None):
+        """
+
+        Args:
+
+        Returns:
+
+        """
         if wrt is None:
             self.translate(pos)
         else:
             self.translate(pos, wrt)
         self.__updateChild()
         return self
+
     def rotate(self, rot, wrt = None):
+        """
+
+        Args:
+
+        Returns:
+
+        """
         if wrt is None:
             self.rotate(rot)
         else:
             self.rotate(rot, wrt)
         self.__updateChild()
         return self
+
     def transform(self, trs, wrt = None):
+        """
+
+        Args:
+
+        Returns:
+
+        """
         if wrt is None:
             self.transform(trs)
         else:

@@ -68,6 +68,11 @@ def parseMeshGeneratorOption(mg, **kwargs):
 
 def loadMesh(fname, **kwargs):
     """Loading mesh file
+
+    Args:
+
+    Returns:
+
     """
     ld = cnoid.AssimpPlugin.AssimpSceneLoader()
     ld.setMessageSinkStdErr()
@@ -99,6 +104,11 @@ def __genShape(mesh, **kwargs):
 
 def makeBox(x, y = None, z = None, **kwargs):
     """make 'Box' shape
+
+    Args:
+
+    Returns:
+
     """
     mg = cnoid.Util.MeshGenerator()
     parseMeshGeneratorOption(mg, **kwrags)
@@ -118,6 +128,11 @@ def makeBox(x, y = None, z = None, **kwargs):
 
 def makeCylinder(radius, height, **kwargs):
     """make 'Cylinder' shape
+
+    Args:
+
+    Returns:
+
     """
     mg = cnoid.Util.MeshGenerator()
     parseMeshGeneratorOption(mg, **kwrags)
@@ -126,6 +141,11 @@ def makeCylinder(radius, height, **kwargs):
 
 def makeSphere(radius, **kwargs):
     """make 'Sphere' shape
+
+    Args:
+
+    Returns:
+
     """
     mg = cnoid.Util.MeshGenerator()
     parseMeshGeneratorOption(mg, **kwrags)
@@ -134,6 +154,11 @@ def makeSphere(radius, **kwargs):
 
 def makeCone(radius, height, **kwargs):
     """make 'Cone' shape
+
+    Args:
+
+    Returns:
+
     """
     mg = cnoid.Util.MeshGenerator()
     parseMeshGeneratorOption(mg, **kwrags)
@@ -142,6 +167,11 @@ def makeCone(radius, height, **kwargs):
 
 def makeCapsule(radius, height, **kwargs):
     """make 'Capsule' shape
+
+    Args:
+
+    Returns:
+
     """
     mg = cnoid.Util.MeshGenerator()
     parseMeshGeneratorOption(mg, **kwrags)
@@ -150,6 +180,11 @@ def makeCapsule(radius, height, **kwargs):
 
 def makeTorus(radius, corssSectionRadius, beginAngle = None, endAngle = None, **kwargs):
     """make 'Torus' shape
+
+    Args:
+
+    Returns:
+
     """
     mg = cnoid.Util.MeshGenerator()
     parseMeshGeneratorOption(mg, **kwrags)
