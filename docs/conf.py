@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'irsl_choreonoid'
+project = 'IRSL python modules'
 copyright = '2023, IRSL-tut'
 author = 'IRSL-tut'
 
@@ -21,6 +21,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.intersphinx',
     'sphinx.ext.autosummary',
+    'sphinx.ext.githubpages',
 ]
 autosummary_generate = True
 templates_path = ['_templates']
@@ -39,3 +40,11 @@ language = 'ja'
 souce_suffix = ['.rst', '.md']
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+
+autodoc_default_options = {
+#    'members': True,
+    'member-order': 'bysource',
+    'special-members': '__init__',
+#    'undoc-members': False,
+#    'exclude-members': '__weakref__'
+}

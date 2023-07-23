@@ -1,15 +1,19 @@
-TEST0 self installed modules
-============================
 
+Coordinates Module
+==================
 
-.. automodule:: cnoid.Body
-    :members:
-
-.. autoclass:: cnoid.Body.Link
-    :members:
+****************
+cnoid.IRSLCoords
+****************
 
 .. automodule:: cnoid.IRSLCoords
     :members:
+
+.. :no-undoc-members:
+
+****************************
+cnoid.IRSLCoords.coordinates
+****************************
 
 .. autoclass:: cnoid.IRSLCoords::coordinates
     :members:
@@ -26,5 +30,3 @@ TEST0 self installed modules
 
         exp4
 
-.. automodule:: cnoid.RobotAssembler
-    :members:

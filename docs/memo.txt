@@ -11,3 +11,8 @@ sphinx-quickstart
 python3 -m pip install pybind11
 python3 setup.py install
 ##
+
+
+##
+make html
+## copy _build/html -> ../docs

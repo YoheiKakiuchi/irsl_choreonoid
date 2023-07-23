@@ -3,15 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to irsl_choreonoid's documentation!
-===========================================
+Welcome to irsl_choreonoid's python documentation!
+==================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   ./test0.rst
-   ./test1.rst
+   ./module_irsl_cnoid_irslcoords.rst
+   ./module_irsl_choreonoid.rst
+   ./module_irsl_choreonoid_ros.rst
+   ./module_irsl_cnoid_irslutil.rst
+   ./choreonoid.rst
+   ./coordinates.rst
+
 
 Indices and tables
 ==================
@@ -20,4 +25,3 @@ Indices and tables
 * :ref:`modindex`
 
 .. * :ref:`search`
-
