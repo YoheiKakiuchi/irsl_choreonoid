@@ -48,3 +48,4 @@ autodoc_default_options = {
 #    'undoc-members': False,
 #    'exclude-members': '__weakref__'
 }
+# autoclass_content = 'both'

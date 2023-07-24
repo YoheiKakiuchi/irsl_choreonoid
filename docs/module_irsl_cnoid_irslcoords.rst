@@ -15,7 +15,7 @@ cnoid.IRSLCoords
 cnoid.IRSLCoords.coordinates
 ****************************
 
-.. autoclass:: cnoid.IRSLCoords::coordinates
+.. autoclass:: cnoid.IRSLCoords.coordinates
     :members:
 
     exp1
@@ -29,4 +29,3 @@ cnoid.IRSLCoords.coordinates
     exp3
 
         exp4
-
