@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+--------------------------------------------------
 Welcome to irsl_choreonoid's python documentation!
-==================================================
+--------------------------------------------------
 
 .. toctree::
    :maxdepth: 2
@@ -17,9 +18,9 @@ Welcome to irsl_choreonoid's python documentation!
    ./choreonoid.rst
    ./coordinates.rst
 
-
+------------------
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
