@@ -1,3 +1,15 @@
+if(NOT ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+Message ("Build : irsl_choreonoid (under choreonoid/ext)")
+
+add_subdirectory(pybind11)
+
+##install(DIRECTORY irsl_choreonoid
+##  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+##  USE_SOURCE_PERMISSIONS
+##)
+
+else() ###
+
 cmake_minimum_required(VERSION 3.0.2)
 cmake_policy(SET CMP0003 NEW)
 cmake_policy(SET CMP0057 NEW)
@@ -108,3 +120,5 @@ install(DIRECTORY test
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
 )
+
+endif() ###

@@ -1,4 +1,19 @@
-###
+if(NOT ${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+
+set(TARGET PyIRSLCoords)
+add_cnoid_python_module(${TARGET} PyIRSLCoords.cpp)
+target_link_libraries(${TARGET} CnoidBody)
+
+set(TARGET2 PyDrawInterface)
+add_cnoid_python_module(${TARGET2} PyDrawInterface.cpp)
+target_link_libraries(${TARGET2} CnoidBase)
+
+set(TARGET3 PyIRSLUtil)
+add_cnoid_python_module(${TARGET3} PyIRSLUtil.cpp)
+target_link_libraries(${TARGET3} CnoidBase)
+
+else() ###
+
 set(TARGET PyIRSLCoords)
 
 add_cnoid_python_module(${TARGET} PyIRSLCoords.cpp)
@@ -67,4 +82,6 @@ else()
   message("in DEVELSPACE")
   set_target_properties(${TARGET3}
     PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${choreonoid_PYTHON_DIR})# copy the library for calling 'import cnoid.hoge'
+endif()
+
 endif()
